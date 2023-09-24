@@ -1,9 +1,11 @@
 package org.example.function;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 public class Java8Function {
     // Whenever you want to perform any operation  and return an output we should use Function FI
@@ -70,5 +72,14 @@ public class Java8Function {
         System.out.println("Function andThen of integer 2: " + f1.andThen(f2).andThen(f1).apply(10));
         System.out.println("Function compose of integer 2: " + f1.compose(f2).apply(2));
         System.out.println("Function compose of integer 2: " + f1.compose(f2).compose(f2).apply(2));
+
+
+        // ------------- stringToIntFunction --------------------------
+        System.out.println("\nConvert string value to int:");
+        String[] strings = {"1", "2"};
+        ToIntFunction<String> stringToIntFunction = s -> Integer.parseInt(s) * 2;
+        for (String s : strings) {
+            System.out.println("String: \""+ s + " * 2\" ToInt: " + stringToIntFunction.applyAsInt(s));
+        }
     }
 }
